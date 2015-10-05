@@ -6,19 +6,21 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    class Animal {
+    class Animal{
         public Animal(string name)
         {
             Name = name;
         }
         virtual public string AnimalType { get; private set; }
+        virtual public string Talk { get; private set; }
         public string Name { get; private set; }
     }
 
-    class Dog : Animal {
-        public Dog(string name):base(name)
+    class Dog : Animal 
+    {
+        public Dog(string name) : base(name)
         {
-
+           
         }
         public override string AnimalType
         {
@@ -27,11 +29,18 @@ namespace ConsoleApplication1
                 return "dog";
             }
         }
+        public override string Talk
+        {
+            get
+            {
+                return "汪汪";
+            }
+        }
     }
 
     class Cat : Animal
     {
-        public Cat(string name):base(name)
+        public Cat(string name) : base(name)
         {
 
         }
@@ -41,6 +50,15 @@ namespace ConsoleApplication1
             {
                 return "cat";
             }
+        }
+        public override string Talk
+        {
+            get
+            {
+                return "喵喵";
+            }
+
+ 
         }
     }
 
@@ -57,16 +75,8 @@ namespace ConsoleApplication1
 
             foreach (var animal in animals)
             {
-                if (animal.AnimalType == "dog")
-                {
-                    Console.WriteLine(animal.Name + "汪汪");
-                } else if (animal.AnimalType == "cat")
-                {
-                    Console.WriteLine(animal.Name + "喵喵");
-                }
+                Console.WriteLine(animal.Name + animal.Talk);
             }
         }
     }
-
-
 }
